@@ -1,0 +1,43 @@
+User-agent: *
+
+#Added to slow down aggressive crawlers from causing a denial of service attack
+Crawl-delay: 5
+
+# Block crawling of logon pages
+Disallow: /wp-admin/
+Disallow: /*wp-login.php*
+Disallow: /my-account/*
+
+# Block search pages
+Disallow: *s=*
+Disallow: */search/*
+
+# Block add to cart and wishlist links, some themes link directly to these and can cause high CPU usage
+Disallow: *add-to-cart*
+Disallow: *add_to_wishlist*
+
+# Block common query strings, you may want to block other filter strings if you theme has a sidebar filter
+Disallow: *currency=*
+Disallow: /*?orderby*
+
+# Block the WordPress feed URLs
+Disallow: */feed/*
+
+
+# Block Plesk and Cpanel smart update test site crawling
+Disallow: *wp-toolkit*
+
+# We need this allow link because we blocked wp-admin earlier
+Allow: /wp-admin/admin-ajax.php
+
+# Change this to your sitemap link
+Sitemap: https://www.yourdomain.com/sitemap_index.xml
+
+# Block aggressive SEO tools
+# See more at https://github.com/mitchellkrogza/apache-ultimate-bad-bot-blocker/blob/master/robots.txt/robots.txt
+User-agent: AhrefsBot
+Disallow: /
+User-agent: Semrush
+Disallow:/
+User-agent: SemrushBot
+Disallow:/
